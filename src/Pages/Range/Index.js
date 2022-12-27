@@ -39,7 +39,7 @@ const Range = () => {
 	useEffect(() => {
 		setLoading(true);
 		const getSemester = async () => {
-			const response = await axios.get('//software.diu.edu.bd:8189/result/semesterList');
+			const response = await axios.get('http://software.diu.edu.bd:8189/result/semesterList');
 			return response.data;
 		}
 		getSemester().then((data) => {
@@ -67,7 +67,7 @@ const Range = () => {
 	const getStudentResult = async (studentId) => {
 		if (semesterId === 'all') {
 			for (let i = 0; i < semesterList.length; i++) {
-				const response = await axios.get(`//software.diu.edu.bd:8189/result`, {
+				const response = await axios.get(`http://software.diu.edu.bd:8189/result`, {
 					params: {
 						studentId: studentId,
 						semesterId: semesterList[i].semesterId,
@@ -82,7 +82,7 @@ const Range = () => {
 		}
 		else {
 
-			const response = await axios.get(`//software.diu.edu.bd:8189/result`, {
+			const response = await axios.get(`http://software.diu.edu.bd:8189/result`, {
 				params: {
 					studentId: studentId,
 					semesterId: semesterId,
@@ -98,7 +98,7 @@ const Range = () => {
 		return 'No Result';
 	}
 	const getStudentInfo = async (studentId) => {
-		const response = await axios.get(`//software.diu.edu.bd:8189/result/studentInfo`, {
+		const response = await axios.get(`http://software.diu.edu.bd:8189/result/studentInfo`, {
 			params: {
 				studentId: studentId
 			}
