@@ -3,6 +3,7 @@ import './App.css';
 import Home from './Pages/Home/Index';
 import { Route, Routes } from 'react-router-dom';
 import Range from './Pages/Range/Index';
+import Instruction from './Pages/Instruction/Index';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/range' element={<Range />} />
+        <Route path='/instruction' element={<Instruction/>} />
       </Routes>
     </>
   );
