@@ -6,9 +6,9 @@ const Header = () => {
 
 	return (
 
-		<h1 className='h-16'>
-			<Link to='/'>Home </Link>
-			<Link to='/range'>Range </Link>
+		<h1 className=' my-6 flex justify-center '>
+			<Link className='bg-blue-400 text-white mx-1 px flex justify-center px-4 py-2' to='/'>Home </Link>
+			<Link className='bg-blue-400 text-white mx-1 px-4 py-2' to='/range'>Range </Link>
 		</h1>
 
 	);

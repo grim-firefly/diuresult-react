@@ -54,13 +54,10 @@ const Range = () => {
 	const handlePrint = (e) => {
 		e.preventDefault();
 		const notprintable = document.querySelector('#infoGather');
-		const printbtn = document.querySelector('#printbtn');
 
 		notprintable.style.display = 'none';
-		printbtn.style.display = 'none';
 		window.print();
 		notprintable.style.display = 'block';
-		printbtn.style.display = 'block';
 
 	}
 
@@ -107,6 +104,7 @@ const Range = () => {
 	}
 
 	const getResult = () => {
+		setStudentResult([]);
 		let fromArray = fromId.split('-');
 		let endArray = endId.split('-');
 		if (fromArray[0] != endArray[0] || fromArray[1] != endArray[1]) {
@@ -161,38 +159,41 @@ const Range = () => {
 
 	return (
 		<div>
-			<Header />
 
 			{(loading || resultLoading) && <div className='loader'>
 				<BeatLoader size={20} color="#60A5FA" />
 			</div>
 			}
-			{!loading &&
-				<div id="infoGather" className={`w-full px-4  sm:w-96 mx-auto flex flex-col gap-4`}>
-					<div>
-						<Input defaultValue={fromId} label="Start From ID" type="text" handleData={handleFromId} />
+			<div id="infoGather">
+				<Header />
+
+				{!loading &&
+					<div  className={`w-full px-4  sm:w-96 mx-auto flex flex-col gap-4`}>
+						<div>
+							<Input defaultValue={fromId} label="Start From ID" type="text" handleData={handleFromId} />
+
+						</div>
+						<div>
+							<Input defaultValue={endId} label="End ID" type="text" handleData={handleEndId} />
+
+						</div>
+						<div>
+							<Select defaultValue={semesterId} data={semesterList} handleData={handleSemesterid} />
+						</div>
+						<div className='-mt-2'>
+							<Button title="Get Result" onClick={getResult} />
+						</div>
 
 					</div>
-					<div>
-						<Input defaultValue={endId} label="End ID" type="text" handleData={handleEndId} />
 
+				}
+				{
+					studentResult.length > 0 &&
+					<div  className='container mx-auto mt-2 '>
+						<button className='bg-red-400 px-2 py-2 rounded-md text-white flex items-center gap-2' onClick={handlePrint} > Print Result <i> <BsPrinter /> </i> </button>
 					</div>
-					<div>
-						<Select defaultValue={semesterId} data={semesterList} handleData={handleSemesterid} />
-					</div>
-					<div className='-mt-2'>
-						<Button title="Get Result" onClick={getResult} />
-					</div>
-
-				</div>
-
-			}
-			{
-				studentResult.length > 0 &&
-				<div id="printbtn" className='container mx-auto mt-2 '>
-					<button className='bg-red-400 px-2 py-2 rounded-md text-white flex items-center gap-2' onClick={handlePrint} > Print Result <i> <BsPrinter /> </i> </button>
-				</div>
-			}
+				}
+			</div>
 			{!resultLoading && studentResult.length > 0 && <AllResult data={studentResult} />}
 
 

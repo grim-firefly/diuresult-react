@@ -60,13 +60,10 @@ const Home = () => {
 	const handlePrint = (e) => {
 		e.preventDefault();
 		const notprintable = document.querySelector('#infoGather');
-		const printbtn = document.querySelector('#printbtn');
 
 		notprintable.style.display = 'none';
-		printbtn.style.display = 'none';
 		window.print();
 		notprintable.style.display = 'block';
-		printbtn.style.display = 'block';
 
 	}
 
@@ -131,35 +128,38 @@ const Home = () => {
 
 	return (
 		<div>
-			<Header />
-
 			{(loading || resultLoading) && <div className='loader'>
 				<BeatLoader size={20} color="#60A5FA" />
 			</div>
 			}
-			{!loading &&
-				<div id="infoGather" className={`w-full px-4  sm:w-96 mx-auto flex flex-col gap-2`}>
-					<div>
-						<Input defaultValue={studentId} label="Student ID" type="text" handleData={handleStudentid} />
+			<div id="infoGather">
+				<Header />
+
+
+				{!loading &&
+					<div className={`w-full px-4  sm:w-96 mx-auto flex flex-col gap-2`}>
+						<div>
+							<Input defaultValue={studentId} label="Student ID" type="text" handleData={handleStudentid} />
+
+						</div>
+						<div>
+							<Select defaultValue={semesterId} data={semesterList} handleData={handleSemesterid} />
+						</div>
+						<div>
+							<Button title="Get Result" onClick={getResult} />
+						</div>
 
 					</div>
-					<div>
-						<Select defaultValue={semesterId} data={semesterList} handleData={handleSemesterid} />
+
+				}
+
+				{
+					!resultLoading && studentResult && studentResult &&
+					<div className='container mx-auto mt-2 '>
+						<button className='bg-red-400 px-2 py-2 rounded-md text-white flex items-center gap-2' onClick={handlePrint} > Print Result <i> <BsPrinter /> </i> </button>
 					</div>
-					<div>
-						<Button title="Get Result" onClick={getResult} />
-					</div>
-
-				</div>
-
-			}
-
-			{
-				!resultLoading && studentResult && studentResult &&
-				<div id="printbtn" className='container mx-auto mt-2 '>
-					<button className='bg-red-400 px-2 py-2 rounded-md text-white flex items-center gap-2' onClick={handlePrint} > Print Result <i> <BsPrinter /> </i> </button>
-				</div>
-			}
+				}
+			</div>
 			{!resultLoading && studentInfo &&
 				<div className='mt-2 container mx-auto'>
 
