@@ -1,0 +1,41 @@
+.inputlabel {
+	position: absolute;
+	opacity: 1;
+	top: 0%;
+	left: 0.5rem;
+	padding: 0 0.125rem;
+	transform: translate(0, -50%);
+	letter-spacing: 1px;
+	background-color: #fff;
+
+
+}
+
+
+.inputbox::placeholder {
+	font-size: 14px;
+	letter-spacing: 1px;
+}
+
+.inputbox:invalid+.inputlabel {
+	opacity: 0;
+	background-color: transparent;
+
+}
+
+.inputbox:focus+.inputlabel {
+	opacity: 1;
+	top: 0;
+	background: #fff;
+	transition: 150ms linear all;
+}
+
+
+
+.inputbox:focus::-webkit-input-placeholder {
+	opacity: 0;
+}
+
+.inputbox:focus::placeholder {
+	opacity: 0;
+}
