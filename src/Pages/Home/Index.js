@@ -40,7 +40,13 @@ const Home = () => {
 	useEffect(() => {
 		setLoading(true);
 		const getSemester = async () => {
-			const response = await axios.get('http://software.diu.edu.bd:8189/result/semesterList');
+			const response = await axios.get('http://software.diu.edu.bd:8189/result/semesterList', {
+				headers: {
+					'Content-Type': 'application/json',
+					'Access-Control-Allow-Origin': '*',
+					
+				}
+			});
 			return response.data;
 		}
 		getSemester().then((data) => {
