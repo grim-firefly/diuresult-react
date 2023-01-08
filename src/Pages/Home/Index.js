@@ -8,7 +8,7 @@ import Button from './../../Common/Button/Index';
 import { BeatLoader } from 'react-spinners';
 import StudentInfo from './Components/StudentInfo/Index';
 import Result from './Components/Output/Index';
-import { BsPrinter } from 'react-icons/bs';
+import { BsPrinter, BsGithub } from 'react-icons/bs';
 
 
 const Home = () => {
@@ -135,6 +135,7 @@ const Home = () => {
 			<div id="infoGather">
 				<Header />
 
+				<div className='flex justify-center text-3xl items-center mb-5'><a href='https://github.com/grim-firefly/diuresult-react'> <BsGithub/> </a> </div>
 
 				{!loading &&
 					<div className={`w-full px-4  sm:w-96 mx-auto flex flex-col gap-2`}>
@@ -176,7 +177,7 @@ const Home = () => {
 
 					))
 					}
-					<div className='flex flex-col md:flex-row  container bg-blue-400 text-white py-4 mb-10 justify-around mx-auto'>
+					<div className='flex flex-col md:flex-row  container bg-blue-400  py-4 mb-10 justify-around mx-auto'>
 						<h1 className='text-center text-xl font-bold'>Total Completed Credit: {totalCredit}</h1>
 						<h1 className='text-center text-xl font-bold'>CGPA: {(totalGpa / totalCredit).toFixed(2)}</h1>
 					</div>

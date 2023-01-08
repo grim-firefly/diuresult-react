@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import Button from './../../Common/Button/Index';
 import { BeatLoader } from 'react-spinners';
-import { BsPrinter } from 'react-icons/bs';
+import { BsGithub, BsPrinter } from 'react-icons/bs';
 import AllResult from './Components/Output/Index';
 
 
@@ -166,7 +166,7 @@ const Range = () => {
 			}
 			<div id="infoGather">
 				<Header />
-
+				<div className='flex justify-center text-3xl items-center mb-5'><a href='https://github.com/grim-firefly/diuresult-react'> <BsGithub/> </a> </div>
 				{!loading &&
 					<div  className={`w-full px-4  sm:w-96 mx-auto flex flex-col gap-4`}>
 						<div>
