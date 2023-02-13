@@ -70,6 +70,8 @@ const Home = () => {
 
 	const getResult = () => {
 		setResultLoading(true);
+		setTotalCredit(0);
+		setTotalGpa(0);
 		const getStudentInfo = async () => {
 			const response = await axios.get(`http://software.diu.edu.bd:8189/result/studentInfo`, {
 				params: {
